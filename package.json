@@ -1,0 +1,25 @@
+{
+  "name": "2015-10-mvp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckellis/2015-10-mvp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckellis/2015-10-mvp/issues"
+  },
+  "homepage": "https://github.com/ckellis/2015-10-mvp#readme",
+  "dependencies": {
+    "angular-ui-router": "^0.2.15",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.2.4"
+  }
+}

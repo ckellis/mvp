@@ -22,9 +22,7 @@ module.exports = {
             } else {
               res.send(200, savedPost);
             }
-          });
           return newPost;
-        }
       })
       .then(function (createdPost) {
         if (createdPost) {
