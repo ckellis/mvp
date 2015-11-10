@@ -3,11 +3,11 @@ var app = angular.module('app', [
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/home");
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: './home.html',
         controller: 'postController'
     })
@@ -16,9 +16,8 @@ var app = angular.module('app', [
         url: '/post',
         templateUrl: './posts.html'
     });
-});
-
-app.factory('Posts', function ($http) {
+})
+.factory('Posts', function ($http) {
 
   var getAll = function () {
     return $http({
@@ -42,9 +41,8 @@ app.factory('Posts', function ($http) {
     getAll: getAll,
     addPost: addPost
   };
-});
-
-app.controller('postController', function ($scope, $location, Posts) {
+})
+.controller('postController', function ($scope, $location, Posts) {
   $scope.data = {};
   $scope.getPosts = function () {
     Posts.getAll()
@@ -61,10 +59,12 @@ app.controller('postController', function ($scope, $location, Posts) {
   $scope.newPost = function () {
     Posts.addPost($scope.post)
       .then(function (err) {
-        $location.path('/home');
+        $location.path('/post');
       })
       .catch(function (err) {
         console.error(err);
       });
   };
 });
+
+

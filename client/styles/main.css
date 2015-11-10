@@ -1,4 +1,23 @@
 body {
-  background-image: url('http://www.goodwp.com/images/201306/goodwp.com_29120.jpg');
+  background-image: url('../assets/wood.jpg');
   background-size: 100%;
+}
+
+input {
+  width: 50%;
+}
+
+textarea {
+  width: 50%;
+}
+
+button {
+  width: 52%;
+  height: 20%;
+}
+
+#container {
+  background-image: url('../assets/quill.png');
+  background-position: 90% 45%;
+  background-repeat: no-repeat;
 }

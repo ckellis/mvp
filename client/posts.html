@@ -1,0 +1,28 @@
+<h1>Post</h1>
+<hr/>
+<div ui-view>
+  <div id='container' ng-controller='postController'>
+    <div class='creator'>
+      <h3>Tell us a tale!</h3>
+      <form name='postForm' ng-submit='newPost()' novalidate>
+        <input type='text'
+          ng-model='post.title'
+          placeholder='What are ye on about?' required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"/>
+
+        <input type='text'
+          ng-model='post.author'
+          placeholder='Who are ye?' required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"/>
+        <br>
+        <textarea class="form-control" rows="6"
+          ng-model='post.message'
+          placeholder="What's on yer mind?" required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"></textarea>
+          <br>
+          <br>
+          <button type='submit' value='submit' class="btn btn-primary btn-lg" ng-disabled='postForm.$invalid'>Yarr!</button>
+      </form>
+    </div>
+  </div>
+</div>

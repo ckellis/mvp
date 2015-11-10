@@ -1,15 +1,17 @@
 var Post = require('./postModel.js');
+var bodyParser = require('body-parser');
 
 module.exports = {
   allPosts: function (req, res, next) {
-    Post.findAll({})
-      .then(function (posts) {
-        res.json(posts);
-      })
-      .fail(function (error) {
-        next(error);
+    Post.find({})
+      .exec(function (err, posts) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.json(posts);
+        }
       });
-    },
+  },
 
   newPost: function (req, res, next) {
           var newPost = new Post({
@@ -20,9 +22,8 @@ module.exports = {
             if (err) {
               next(err);
             } else {
-              res.send(200, savedPost);
+              return savedPost;
             }
-          return newPost;
       })
       .then(function (createdPost) {
         if (createdPost) {
