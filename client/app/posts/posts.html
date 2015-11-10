@@ -1,3 +1,26 @@
 <h1>Post</h1>
 <hr/>
-<div ui-view></div>
+<div ui-view>
+  <div id='container' ng-controller='postController'>
+    <div class='creator'>
+      <form name='postForm' ng-submit='newPost()' novalidate>
+        <input name='title' type='text'
+          ng-model='post.title'
+          placeholder='What are ye on about?' required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"/>
+
+        <input name='author' type='text'
+          ng-model='post.author'
+          placeholder='Who are ye?' required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"/>
+
+        <input name='message' type='text'
+          ng-model='post.message'
+          placeholder="What's on yer mind?" required
+          ng-class="{'error': postForm.$invalid && postForm.$dirty}"/>
+
+          <button type='submit' value='submit' class="btn btn-default" ng-disabled='postForm.$invalid'>Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,11 @@
 <h1>Home</h1>
 <hr/>
-<div ui-view></div>
+<div ui-view>
+  <div class="posts">
+    <div class="post" ng-repeat="post in data.posts track by post.timestamp">
+      <h2 class="title">{{ post.title }}</h2>
+      <h4 class="author">{{ post.author }}</h4>
+      <p class="message">{{ post.message }}</p>
+    </div>
+  </div
+</div>
