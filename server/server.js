@@ -4,7 +4,13 @@ var postController = require('./posts/postController.js');
 var bodyParser = require('body-parser');
 var Post = require('./posts/postModel.js');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.all("/*", function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  return next();
+});
+
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
@@ -21,9 +27,9 @@ app.use(function (error, req, res, next) {
   next(error);
 });
 
-app.use(function (error, req, res, next) {
-  res.send(500, {error: error.message});
-});
+// app.use(function (error, req, res, next) {
+//   res.send(500, {error: error.message});
+// });
 
 app.listen(3000);
 

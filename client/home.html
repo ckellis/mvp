@@ -1,5 +1,6 @@
 <h1>Home</h1>
 <hr/>
+<br>
 <div ui-view>
   <div class="posts">
     <div class="post" ng-repeat="post in data.posts">
@@ -7,6 +8,7 @@
       <h4 class="author">Scribed by: {{ post.author }}</h4>
       <p class="message">{{ post.message }}</p>
       <br>
+      <hr>
     </div>
   </div
 </div>

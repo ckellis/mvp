@@ -16,8 +16,42 @@ button {
   height: 20%;
 }
 
+.tan {
+  background-color: #F5EFE6;
+}
+
 #container {
   background-image: url('../assets/quill.png');
   background-position: 90% 45%;
   background-repeat: no-repeat;
 }
+
+h2 {
+  color: #006dcc;
+}
+
+
+
+hr {
+  height: 1px;
+  background-color:#C3AF92;
+  color:#C3AF92;
+}
+
+.post {
+  padding-bottom: 15px;
+}
+
+.navbar-inner {
+  background-color: #F5EFE6 !important;
+  background: #F5EFE6;
+  background-image: url('../assets/anchor.png');
+  background-position: 98% 50%;
+  background-size: 3%;
+  background-repeat: no-repeat;
+}
+
+.navbar-inner, .navbar, .btn-navbar {
+  background-color: #F5EFE6 ;
+}
+

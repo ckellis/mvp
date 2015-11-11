@@ -14,24 +14,17 @@ module.exports = {
   },
 
   newPost: function (req, res, next) {
-          var newPost = new Post({
-            title: req.body.title,
-            message: req.body.message,
-            author: req.body.author
-          }).save(function (err, savedPost) {
-            if (err) {
-              next(err);
-            } else {
-              return savedPost;
-            }
-      })
-      .then(function (createdPost) {
-        if (createdPost) {
-          res.json(createdPost);
-        }
-      })
-      .fail(function (error) {
-        next(error);
-      });
+    var newPost = new Post({
+      title: req.body.title,
+      message: req.body.message,
+      author: req.body.author
+    }).save(function (err) {
+      if (err) return handleError(err);
+    })
+    .then(function (createdPost) {
+      if (createdPost) {
+        res.json(createdPost);
+      }
+    });
   }
 };

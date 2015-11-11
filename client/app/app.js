@@ -1,7 +1,7 @@
 var app = angular.module('app', [
   'ui.router'
 ])
-.config(function ($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise('/');
 
@@ -16,6 +16,7 @@ var app = angular.module('app', [
         url: '/post',
         templateUrl: './posts.html'
     });
+    $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 })
 .factory('Posts', function ($http) {
 
@@ -30,10 +31,17 @@ var app = angular.module('app', [
   };
 
   var addPost = function (post) {
-    return $http({
-      method: 'POST',
-      url: '/post',
-      data: post
+    var url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20piratespeak.translate%20where%20html%20%3D%20%22'+ post.message +'%22&format=json&diagnostics=true&env=store%3A%2F%2Fkid666.com%2Fpiratespeak&callback=JSON_CALLBACK';
+
+   return $http.jsonp(url)
+    .success(function (resp) {
+      post.message = resp.query.results.result;
+
+      $http({
+        method: 'POST',
+        url: '/post',
+        data: post
+      });
     });
   };
 
@@ -59,7 +67,7 @@ var app = angular.module('app', [
   $scope.newPost = function () {
     Posts.addPost($scope.post)
       .then(function (err) {
-        $location.path('/post');
+        $location.path('/home');
       })
       .catch(function (err) {
         console.error(err);
