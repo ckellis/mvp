@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var port = process.env.PORT || 3000;
 var postController = require('./posts/postController.js');
 var bodyParser = require('body-parser');
 var Post = require('./posts/postModel.js');
@@ -31,6 +32,6 @@ app.use(function (error, req, res, next) {
   res.send(500, {error: error.message});
 });
 
-app.listen(3000);
+app.listen(port);
 
 
