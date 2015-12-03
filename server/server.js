@@ -27,9 +27,9 @@ app.use(function (error, req, res, next) {
   next(error);
 });
 
-// app.use(function (error, req, res, next) {
-//   res.send(500, {error: error.message});
-// });
+app.use(function (error, req, res, next) {
+  res.send(500, {error: error.message});
+});
 
 app.listen(3000);
 
